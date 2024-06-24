@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #21529a;
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+main {
+    position: absolute;
+    left: 0;
+    margin: 0 0 0 10em;
+    height: 60vh;
+}
+
+header {
+    /* position: absolute;
+    top: 0;
+    right: 0; */
+}
+
+.title {
+    display: flex;
+}
+
+.img-title-src {
+    width: 70pt;
+}
+
+.text-title {
+    font-size: 30px;
+    margin: 0 0 0 14pt;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0 0 0;
+}
+
+input {
+    margin: 15px 0 0 0;
+    color: #fff;
+    border: 3.5px solid #eee;
+    background-color: #00255b;
+    font-size: x-large;
+    padding: 0 0 0 .7em;
+    height: 3rem;
+    width: 18em;
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+.route {
+    margin: 15px 0 0 0;
+}
+
+button {
+    padding: 15px;
+    border: 0px solid #eee;
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+
+button#play {
+    width: 18em;
+    background-color: #e200fd;
+}
+
+button#instruction {
+    background-color: #fff600;
+    margin: 0 0 0 9px;
+    width: 15em;
+}
+
+button:hover {
+    cursor: pointer;
+}
