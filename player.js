@@ -3,8 +3,8 @@ import { InputHandle } from "./input.js";
 export class Player {
   constructor(game, inputHandle, controls, x, y, mirror = false) {
     this.game = game;
-    this.inputHandle = inputHandle; // Buat instance dari InputHandle
-    this.controls = controls; // Kontrol khusus untuk pemain ini
+    this.inputHandle = inputHandle;
+    this.controls = controls;
     this.width = 113.77;
     this.height = 113;
     this.x = x;
@@ -12,11 +12,10 @@ export class Player {
     this.vy = 0;
     this.image = document.getElementById("player");
     this.speed = 5;
-    this.jumpPower = 15;
+    this.jumpPower = 25;
     this.jumping = false;
-    this.mirror = mirror; // Properti untuk menentukan apakah gambar dicerminkan
+    this.mirror = mirror;
 
-    // Tambahkan properti untuk animasi
     this.spritesWidth = 113.77;
     this.spritesHeight = 113;
     this.playerState = "idle";
@@ -25,6 +24,14 @@ export class Player {
     this.spriteAnimations = [];
 
     this.loadAnimations();
+
+    // Collision box
+    this.collisionBox = {
+      x: this.x + 20,    // Sesuaikan posisi dan ukuran sesuai gambar pemain
+      y: this.y + 20,
+      width: this.width - 40,
+      height: this.height - 40
+    };
   }
 
   loadAnimations() {
@@ -47,18 +54,17 @@ export class Player {
     });
   }
 
-  update() {
-    // Ubah playerState berdasarkan inputHandle.keys
+  update(players) {
     if (this.inputHandle.isKeyPressed(this.controls.left)) {
       this.playerState = "front";
-      this.x -= this.speed; // Bergerak ke kiri
+      this.x -= this.speed;
     } else if (this.inputHandle.isKeyPressed(this.controls.right)) {
       this.playerState = "back";
-      this.x += this.speed; // Bergerak ke kanan
+      this.x += this.speed;
     } else if (this.inputHandle.isKeyPressed(this.controls.up)) {
       if (!this.jumping) {
-        this.jumping = true; // Mulai lompatan jika tidak sedang melompat
-        this.vy = -this.jumpPower; // Berikan kecepatan vertikal ke atas
+        this.jumping = true;
+        this.vy = -this.jumpPower;
       }
       this.playerState = "jump";
     } else if (this.inputHandle.isKeyPressed(this.controls.kick)) {
@@ -67,25 +73,50 @@ export class Player {
       this.playerState = "idle";
     }
 
-    // Gravitasi: atur turunnya pemain setelah lompatan
     if (this.jumping) {
       this.y += this.vy;
-      this.vy += 0.8; // Gravitasi
+      this.vy += 0.8;
     }
 
-    // Batasi pergerakan di dalam batas layar
+    // Update collision box position
+    this.collisionBox.x = this.x + 20;
+    this.collisionBox.y = this.y + 20;
+
+    // Check collision with other players
+    players.forEach((otherPlayer) => {
+      if (this !== otherPlayer && this.checkCollisionWith(otherPlayer)) {
+        // Handle collision logic
+        // Example: stop movement
+        if (this.inputHandle.isKeyPressed(this.controls.left)) {
+          this.x = otherPlayer.x + otherPlayer.width + 1;
+        } else if (this.inputHandle.isKeyPressed(this.controls.right)) {
+          this.x = otherPlayer.x - this.width - 1;
+        }
+      }
+    });
+
     if (this.x < 0) {
       this.x = 0;
     } else if (this.x > this.game.width - this.width) {
       this.x = this.game.width - this.width;
     }
 
-    // Batasi pergerakan vertikal agar tidak melewati lantai
     if (this.y > this.game.height - this.height - 70) {
       this.y = this.game.height - this.height - 70;
-      this.jumping = false; // Setel lompatan selesai ketika mencapai lantai
-      this.vy = 0; // Nolkan kecepatan vertikal setelah lompatan
+      this.jumping = false;
+      this.vy = 0;
     }
+
+    this.gameFrame++;
+  }
+
+  checkCollisionWith(player) {
+    return (
+      this.collisionBox.x < player.collisionBox.x + player.collisionBox.width &&
+      this.collisionBox.x + this.collisionBox.width > player.collisionBox.x &&
+      this.collisionBox.y < player.collisionBox.y + player.collisionBox.height &&
+      this.collisionBox.y + this.collisionBox.height > player.collisionBox.y
+    );
   }
 
   draw(context) {
@@ -97,15 +128,15 @@ export class Player {
 
     context.save();
     if (this.mirror) {
-      context.scale(-1, 1); // Balikkan kanvas secara horizontal
-      context.translate(-this.game.width, 0); // Pindahkan kembali posisi ke tempat yang benar
+      context.scale(-1, 1);
+      context.translate(-this.game.width, 0);
       context.drawImage(
         this.image,
         frameX,
         frameY,
         this.spritesWidth,
         this.spritesHeight,
-        this.game.width - this.x - this.width, // Posisikan dengan benar jika dicerminkan
+        this.game.width - this.x - this.width,
         this.y,
         this.width,
         this.height
@@ -124,6 +155,5 @@ export class Player {
       );
     }
     context.restore();
-    this.gameFrame++;
   }
 }
