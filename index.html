@@ -1,17 +1,61 @@
--- Active: 1716991195873@@127.0.0.1@3306
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game Bola</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <canvas id="canvas1"></canvas>
 
-    <img src="imgs/England.png" id="player" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+</head>
 
-    <script type="module" src="main.js"></script>
-  </body>
+<body>
+    <div class="page">
+        <main>
+            <header class="title">
+                <div class="img-title">
+                    <img class="img-title-src" src="imgs/Ball 02.png" alt="bola">
+                </div>
+                <div class="text-title">
+                    <h2>WORLD HEAD</h2>
+                    <h2>FOOTBALL</h2>
+                </div>
+            </header>
+            <section class="input">
+                <input type="text" placeholder="Input Username">
+                <input type="text" placeholder="Select Country">
+                <input type="text" placeholder="Select Opponent Country">
+                <input type="text" placeholder="Select Level">
+            </section>
+            <section class="route">
+                <button id="play" onclick="window.location='game.html'">
+                    <p class="text-route" id="pg">
+                        Play Game
+                    </p>
+                </button>
+                <button id="instruction" onclick="window.location='Instruction'">
+                    <p class="text-route" id="instru">
+                        Instruction
+                    </p>
+                </button>
+            </section>
+        </main>
+        <aside>
+            <div class="htp">
+                <div class="text-htp">
+                    <h1>How to play game</h1>
+                </div>
+                <div class="close">
+                    <img class="close-img" src="imgs/close-icon-13602.png" alt="">
+                </div>
+            </div>
+            <div class="htp-list">
+                <p class="list">1. input username</p>
+                <p class="list">2. move character to bounce ball</p>
+                <p class="list">3. get high score and win</p>
+                <p class="list">4. enjoy!</p>
+            </div>
+        </aside>
+    </div>
+</body>
+
 </html>

@@ -7,28 +7,15 @@
 .page {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     min-height: 100vh;
     background: #21529a;
     color: #ffffff;
 }
 
-a {
-    text-decoration: none;
-
-}
-
 main {
-    position: absolute;
-    left: 0;
-    margin: 0 0 0 10em;
-    height: 60vh;
-}
-
-header {
-    /* position: absolute;
-    top: 0;
-    right: 0; */
+    /* margin: 10em 0 0 0; */
+    height: 36vh;
 }
 
 .title {
@@ -36,29 +23,29 @@ header {
 }
 
 .img-title-src {
-    width: 70pt;
+    height: 8.5vh;
 }
 
 .text-title {
-    font-size: 30px;
+    font-size: 15px;
     margin: 0 0 0 14pt;
 }
 
 .input {
     display: flex;
     flex-direction: column;
-    margin: 1em 0 0 0;
 }
 
 input {
+    outline: none;
     margin: 15px 0 0 0;
     color: #fff;
     border: 3.5px solid #eee;
     background-color: #00255b;
-    font-size: x-large;
+    width: 22.7em;
+    font-size: medium;
     padding: 0 0 0 .7em;
-    height: 3rem;
-    width: 18em;
+    height: 6vh;
     border-radius: .3em;
     -webkit-border-radius: .3em;
     -moz-border-radius: .3em;
@@ -71,30 +58,84 @@ input::placeholder {
 }
 
 .route {
-    margin: 15px 0 0 0;
+    /* margin: 15px 0 0 0; */
 }
 
 button {
-    padding: 15px;
+    padding: 10px;
     border: 0px solid #eee;
     border-radius: .3em;
     -webkit-border-radius: .3em;
     -moz-border-radius: .3em;
     -ms-border-radius: .3em;
     -o-border-radius: .3em;
+    
 }
 
 button#play {
-    width: 18em;
+    width: 15em;
     background-color: #e200fd;
+}
+
+#pg {
+    color: #eee;
 }
 
 button#instruction {
     background-color: #fff600;
-    margin: 0 0 0 9px;
-    width: 15em;
+    /* margin: 0 0 0 9px; */
+    width: 13.2em;
+}
+
+#instru {
+    color: #21529a;
+}
+
+.text-route {
+    font-size: large;
+    font-weight: 800;
 }
 
 button:hover {
     cursor: pointer;
 }
+
+aside {
+    width: 40vw;
+    background-color: #00255b;
+    height: 70vh;
+    padding: 1em 1em 0 1.9em;
+    margin: 0 0 0 4em;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.htp {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-htp {
+    margin-top: 15px;
+    font-size: medium;
+}
+
+h1 {
+    font-weight: 800;
+}
+
+.close-img {
+    width: 40px;
+}
+
+.htp-list {
+    margin: 10px 0 0 0;
+}
+
+.list {
+    margin: 20px 0 0 0;
+}
+
