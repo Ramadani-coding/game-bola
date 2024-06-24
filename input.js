@@ -1,32 +1,15 @@
 export class InputHandle {
   constructor() {
-    this.keys = [];
+    this.keys = {};
     window.addEventListener("keydown", (e) => {
-      if (
-        (e.key === "ArrowDown" ||
-          e.key === "ArrowUp" ||
-          e.key === "ArrowLeft" ||
-          e.key === "ArrowRight" ||
-          e.key === "w" ||
-          e.key === "ArrowRight") &&
-        this.keys.indexOf(e.key) === -1
-      ) {
-        this.keys.push(e.key);
-      }
-      console.log(e.key, this.keys);
+      this.keys[e.key] = true;
     });
     window.addEventListener("keyup", (e) => {
-      if (
-        e.key === "ArrowDown" ||
-        e.key === "ArrowUp" ||
-        e.key === "ArrowLeft" ||
-        e.key === "ArrowRight" ||
-        e.key === "w" ||
-        e.key === "r"
-      ) {
-        this.keys.splice(this.keys.indexOf(e.key), 1);
-      }
-      console.log(e.key, this.keys);
+      this.keys[e.key] = false;
     });
+  }
+
+  isKeyPressed(key) {
+    return this.keys[key] || false;
   }
 }
