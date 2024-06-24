@@ -34,7 +34,7 @@ players.push(player2);
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   players.forEach((player) => {
-    player.update();
+    player.update(players); // Mengirim array players ke dalam method update
     player.draw(ctx);
   });
   requestAnimationFrame(animate);

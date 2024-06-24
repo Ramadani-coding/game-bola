@@ -51,6 +51,7 @@ header {
 }
 
 input {
+    outline: none;
     margin: 15px 0 0 0;
     color: #fff;
     border: 3.5px solid #eee;
