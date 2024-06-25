@@ -1,7 +1,7 @@
 import { InputHandle } from "./input.js";
 
 export class Player {
-  constructor(game, inputHandle, controls, x, y, mirror = false) {
+  constructor(game, inputHandle, controls, x, y, mirror = false, ball) { // Tambahkan ball ke dalam constructor
     this.game = game;
     this.inputHandle = inputHandle;
     this.controls = controls;
@@ -27,11 +27,14 @@ export class Player {
 
     // Collision box
     this.collisionBox = {
-      x: this.x + 20,    // Sesuaikan posisi dan ukuran sesuai gambar pemain
+      x: this.x + 20,
       y: this.y + 20,
       width: this.width - 40,
       height: this.height - 40
     };
+
+    // Simpan instance ball di dalam Player
+    this.ball = ball;
   }
 
   loadAnimations() {
@@ -69,6 +72,9 @@ export class Player {
       this.playerState = "jump";
     } else if (this.inputHandle.isKeyPressed(this.controls.kick)) {
       this.playerState = "kick";
+      if (this.ball) {  // Pastikan ball ada dan sudah didefinisikan
+        this.ball.kick("up");
+      }
     } else {
       this.playerState = "idle";
     }
@@ -78,15 +84,11 @@ export class Player {
       this.vy += 0.8;
     }
 
-    // Update collision box position
     this.collisionBox.x = this.x + 20;
     this.collisionBox.y = this.y + 20;
 
-    // Check collision with other players
     players.forEach((otherPlayer) => {
       if (this !== otherPlayer && this.checkCollisionWith(otherPlayer)) {
-        // Handle collision logic
-        // Example: stop movement
         if (this.inputHandle.isKeyPressed(this.controls.left)) {
           this.x = otherPlayer.x + otherPlayer.width + 1;
         } else if (this.inputHandle.isKeyPressed(this.controls.right)) {
