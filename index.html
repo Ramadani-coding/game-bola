@@ -13,7 +13,7 @@
         <main>
             <header class="title">
                 <div class="img-title">
-                    <img class="img-title-src" src="imgs/Ball 02.png" alt="bola">
+                    <img class="img-title-src" src="imgs/Ball.png" alt="bola">
                 </div>
                 <div class="text-title">
                     <h2>WORLD HEAD</h2>
@@ -22,9 +22,43 @@
             </header>
             <section class="input">
                 <input type="text" placeholder="Input Username">
-                <input type="text" placeholder="Select Country">
-                <input type="text" placeholder="Select Opponent Country">
-                <input type="text" placeholder="Select Level">
+
+                <select class="input-option" name="cars" id="cars">
+                    <option value="">Select Country</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="England">England</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="German">German</option>
+                    <option value="Italy">Italy</option>
+                </select>
+                
+                <select class="input-option" name="cars" id="cars">
+                    <option value="">Select Country</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="England">England</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="German">German</option>
+                    <option value="Italy">Italy</option>
+                </select>
+
+                <select class="input-option" name="cars" id="cars">
+                    <option value="">Select Country</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="England">England</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="German">German</option>
+                    <option value="Italy">Italy</option>
+                </select>
+
             </section>
             <section class="route">
                 <button id="play" onclick="window.location='game.html'">
@@ -32,19 +66,19 @@
                         Play Game
                     </p>
                 </button>
-                <button id="instruction" onclick="window.location='Instruction'">
+                <button id="instruction-btn">
                     <p class="text-route" id="instru">
                         Instruction
                     </p>
                 </button>
             </section>
         </main>
-        <aside>
+        <aside id="instruction" style="display: none;">
             <div class="htp">
                 <div class="text-htp">
                     <h1>How to play game</h1>
                 </div>
-                <div class="close">
+                <div id="close" class="close">
                     <img class="close-img" src="imgs/close-icon-13602.png" alt="">
                 </div>
             </div>
@@ -57,5 +91,6 @@
         </aside>
     </div>
 </body>
+<script lang="javascript" src="home.js"></script>
 
 </html>

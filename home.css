@@ -23,12 +23,12 @@ main {
 }
 
 .img-title-src {
-    height: 8.5vh;
+    height: 11vh;
 }
 
 .text-title {
-    font-size: 15px;
-    margin: 0 0 0 14pt;
+    font-size: 18px;
+    margin: 5pt 0 0 14pt;
 }
 
 .input {
@@ -42,9 +42,9 @@ input {
     color: #fff;
     border: 3.5px solid #eee;
     background-color: #00255b;
-    width: 22.7em;
+    width: 19em;
     font-size: medium;
-    padding: 0 0 0 .7em;
+    padding: 0 .5em 0 .7em;
     height: 6vh;
     border-radius: .3em;
     -webkit-border-radius: .3em;
@@ -57,6 +57,42 @@ input::placeholder {
     color: #fff;
 }
 
+.input-option {
+    outline: none;
+    margin: 15px 0 0 0;
+    color: #fff;
+    border: 3.5px solid #eee;
+    background-color: #00255b;
+    width: 20.2em;
+    font-size: medium;
+    /* padding: 0 .5em 0 .7em; */
+    height: 6vh;
+    border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    -ms-border-radius: .3em;
+    -o-border-radius: .3em;
+}
+
+.input-option-list {
+    border: 0px solid #eee;
+    outline: none;
+    background-color: #00255b;
+    width: 19em;
+    margin: 0vh 10vh 10vh 0vh;
+    padding: 8px;
+    font-size: medium;
+    color: #eee;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+option:first-child {
+    color: #999;
+    background-color: red;
+}
 .route {
     margin: 15px 0 0 0;
 }
@@ -73,7 +109,7 @@ button {
 }
 
 button#play {
-    width: 15em;
+    width: 13.4em;
     background-color: #e200fd;
 }
 
@@ -81,10 +117,10 @@ button#play {
     color: #eee;
 }
 
-button#instruction {
+button#instruction-btn {
     background-color: #fff600;
     margin: 0 0 0 9px;
-    width: 12.5em;
+    width: 10.3em;
 }
 
 #instru {
