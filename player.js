@@ -1,7 +1,7 @@
 import { InputHandle } from "./input.js";
 
 export class Player {
-  constructor(game, inputHandle, controls, x, y, mirror = false, ball) { // Tambahkan ball ke dalam constructor
+  constructor(game, inputHandle, controls, x, y, mirror = false, ball) {
     this.game = game;
     this.inputHandle = inputHandle;
     this.controls = controls;
@@ -72,7 +72,7 @@ export class Player {
       this.playerState = "jump";
     } else if (this.inputHandle.isKeyPressed(this.controls.kick)) {
       this.playerState = "kick";
-      if (this.ball) {  // Pastikan ball ada dan sudah didefinisikan
+      if (this.ball) {
         this.ball.kick("up");
       }
     } else {
@@ -97,6 +97,16 @@ export class Player {
       }
     });
 
+    if (this.ball && this.checkCollisionWith(this.ball)) {
+      if (this.inputHandle.isKeyPressed(this.controls.left)) {
+        this.ball.x = this.x - this.ball.width - 1;
+        this.ball.vx = -this.speed;
+      } else if (this.inputHandle.isKeyPressed(this.controls.right)) {
+        this.ball.x = this.x + this.width + 1;
+        this.ball.vx = this.speed;
+      }
+    }
+
     if (this.x < 0) {
       this.x = 0;
     } else if (this.x > this.game.width - this.width) {
@@ -112,12 +122,12 @@ export class Player {
     this.gameFrame++;
   }
 
-  checkCollisionWith(player) {
+  checkCollisionWith(object) {
     return (
-      this.collisionBox.x < player.collisionBox.x + player.collisionBox.width &&
-      this.collisionBox.x + this.collisionBox.width > player.collisionBox.x &&
-      this.collisionBox.y < player.collisionBox.y + player.collisionBox.height &&
-      this.collisionBox.y + this.collisionBox.height > player.collisionBox.y
+      this.collisionBox.x < object.x + object.width &&
+      this.collisionBox.x + this.collisionBox.width > object.x &&
+      this.collisionBox.y < object.y + object.height &&
+      this.collisionBox.y + this.collisionBox.height > object.y
     );
   }
 
