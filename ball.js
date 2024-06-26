@@ -29,11 +29,18 @@ export class Ball {
       this.y = this.game.height - this.height - 85;  // Set posisi bola di atas tanah
       this.vy = 0;  // Hentikan pergerakan vertikal bola
       this.onGround = true;  // Bola menyentuh tanah
+    } else if (this.y <= 0) {  // Deteksi jika bola mencapai batas layar atas
+      this.y = 0;
+      this.vy = -this.vy;
     }
 
     // Deteksi jika bola mencapai batas layar kiri atau kanan
-    if (this.x <= 0 || this.x + this.width >= this.game.width) {
-      this.vx = -this.vx;  // Balik arah bola jika mencapai batas kiri atau kanan
+    if (this.x <= 0) {
+      this.x = 0;
+      this.vx = -this.vx;
+    } else if (this.x + this.width >= this.game.width) {
+      this.x = this.game.width - this.width;
+      this.vx = -this.vx;
     }
   }
 
